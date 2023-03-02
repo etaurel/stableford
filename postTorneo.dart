@@ -126,6 +126,8 @@ class DataHoyoJuego {
 ///
 
 class DataJugadorScore {
+  bool useScoreCardStb2 = false; // Inicializa a false
+
   String status_med = '';
   String status_sta = '';
   String status_mch = '';
@@ -413,6 +415,11 @@ class DataJugadorScore {
   /// STABLEFORD ----------------------------------------------
     int golpesHcpStb = 0;
     int hcpStbTorneo=(hcpTorneo*0.85).round(); ///85%
+    if (useScoreCardStb2) {
+      hcpStbTorneo = hcpTorneo.round();
+    } else {
+      hcpStbTorneo = (hcpTorneo * 0.85).round();
+    }
     // int hcpStbTorneo=(hcpTorneo).round(); ///100%
     print("hcpStbTorneo---------------------");
     print(hcpStbTorneo);

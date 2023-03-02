@@ -43,13 +43,14 @@ import 'package:recase/recase.dart';
 
 class ScoreCardStb2 extends StatefulWidget {
   //PostUser postUser;
-  ScoreCardStb2() : super();
+  ScoreCardStb2({Key key}) : super(key: key);
   @override
-  ScoreCardStbState createState() => ScoreCardStbState();
+  ScoreCardStb2State createState() => ScoreCardStb2State();
 }
 
 //class ScoreCardState extends State<ScoreCard> {
-class ScoreCardStbState extends State<ScoreCardStb2> with WidgetsBindingObserver {
+class ScoreCardStb2State extends State<ScoreCardStb2> with WidgetsBindingObserver {
+  bool useScoreCardStb2 = false; // Agrega esta variable booleana
   bool _controlClickPress=false;
   MessagesToast mToast;
   Lan lan = new Lan();
@@ -58,7 +59,7 @@ class ScoreCardStbState extends State<ScoreCardStb2> with WidgetsBindingObserver
   PostUser postUser;
   PostTorneo postTorneo;
   List<DataJugadorScore> _jugadores;
-  ScoreCardStbState();
+  ScoreCardStb2State();
   List<DataJugadorScore> _dataJugadoresScore = [];
   GlobalKey<ScaffoldState> _scaffoldKey;
   List<TextEditingController> _controllerHoyo = [];
@@ -117,6 +118,7 @@ class ScoreCardStbState extends State<ScoreCardStb2> with WidgetsBindingObserver
     }
     setState(() {
       _notification = state;
+      useScoreCardStb2 = !useScoreCardStb2; // Cambia el valor de useScoreCardStb2
     });
   }
 
@@ -693,6 +695,15 @@ class ScoreCardStbState extends State<ScoreCardStb2> with WidgetsBindingObserver
 //                                             color: Colors.black),
 //                                       ),
 //                                     ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          useScoreCardStb2 = !useScoreCardStb2;
+                                        });
+                                        setState(() {}); // Agrega este setState
+                                      },
+                                      child: Text('Cambiar ScoreCard'),
+                                    ),
                                     Container (
                                       alignment: Alignment.center,
                                       child: Text('Código de Torneo', textAlign: TextAlign.center, textScaleFactor: 1, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
@@ -1340,8 +1351,7 @@ class ScoreCardStbState extends State<ScoreCardStb2> with WidgetsBindingObserver
                         ]),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      UserFunctions.scoreZeroToEmpty(
-                          jugador.hoyos[hoyoNro - 1].stableford),
+                      UserFunctions.scoreZeroToEmpty(jugador.hoyos[hoyoNro - 1].stableford),
                       textScaleFactor: 1,
                       //style: TextStyle(fontSize: 45, color: Colors.white),
                       style: TextStyle(

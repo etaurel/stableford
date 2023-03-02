@@ -43,14 +43,15 @@ import 'package:recase/recase.dart';
 
 class ScoreCardStb extends StatefulWidget {
   //PostUser postUser;
-  ScoreCardStb() : super();
+  ScoreCardStb({Key key}) : super(key: key);
   @override
   ScoreCardStbState createState() => ScoreCardStbState();
 }
 
 //class ScoreCardState extends State<ScoreCard> {
 class ScoreCardStbState extends State<ScoreCardStb> with WidgetsBindingObserver {
- bool _controlClickPress=false;
+  bool useScoreCardStb2 = true; // Agrega esta variable booleana
+  bool _controlClickPress=false;
   MessagesToast mToast;
   Lan lan = new Lan();
   AppLifecycleState _notification;
@@ -117,6 +118,7 @@ class ScoreCardStbState extends State<ScoreCardStb> with WidgetsBindingObserver 
     }
     setState(() {
       _notification = state;
+      useScoreCardStb2 = !useScoreCardStb2; // Cambia el valor de useScoreCardStb2
     });
   }
 
@@ -693,7 +695,7 @@ class ScoreCardStbState extends State<ScoreCardStb> with WidgetsBindingObserver 
 //                                             color: Colors.black),
 //                                       ),
 //                                     ),
-                                Container (
+                                    Container (
                                   alignment: Alignment.center,
                                   child: Text('Código de Torneo', textAlign: TextAlign.center, textScaleFactor: 1, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                                 ),

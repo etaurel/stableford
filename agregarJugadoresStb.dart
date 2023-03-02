@@ -33,6 +33,8 @@ class AgregaJugaStb extends StatefulWidget {
 }
 
 class AgregaJugaState extends State<AgregaJugaStb> {
+  bool useScoreCardStb2 = false; // Agrega esta variable booleana
+
   //******************************************************************************
   var _limiteJugadores = 4;
   //******************************************************************************
@@ -634,6 +636,9 @@ class AgregaJugaState extends State<AgregaJugaStb> {
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 22.0, color: Colors.white)),
                         onPressed: () {
+                          setState(() {
+                            useScoreCardStb2 = !useScoreCardStb2; // Cambia el valor de useScoreCardStb2
+                          });
                               _verificaTeesStb();
                         },
                       ),
@@ -660,6 +665,9 @@ class AgregaJugaState extends State<AgregaJugaStb> {
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 22.0, color: Colors.white)),
                         onPressed: () {
+                          setState(() {
+                            useScoreCardStb2 = !useScoreCardStb2; // Cambia el valor de useScoreCardStb2
+                          });
                           _verificaTeesStb2();
                         },
                       ),
@@ -957,6 +965,11 @@ class AgregaJugaState extends State<AgregaJugaStb> {
   }
 
   void _verificaTeesStb() async {
+    setState(() {
+      useScoreCardStb2 = useScoreCardStb2;
+      print(useScoreCardStb2);
+    });
+
     bool _isOk = true;
     String matriculas = '';
     List<String> _cTee = [];
