@@ -25,6 +25,17 @@ import 'package:admob_flutter/admob_flutter.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 
+String scoreCardStbType = "scoreCardStb"; // por defecto
+
+int hcpStbTorneo = 0; // valor inicial
+
+void setHcpStbTorneo(String scoreCardStbType, int hcpTorneo) {
+  if (scoreCardStbType == "scoreCardStb") {
+    hcpStbTorneo = (hcpTorneo * 0.85).round();
+  } else if (scoreCardStbType == "scoreCardStb2") {
+    hcpStbTorneo = hcpTorneo.round();
+  }
+}
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
