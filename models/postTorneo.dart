@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:golfguidescorecard/main.dart' show hcpStbTorneo;
 import 'package:golfguidescorecard/mod_serv/model.dart';
 import 'package:golfguidescorecard/scoresCard/torneo.dart';
 import 'package:golfguidescorecard/services/db-admin.dart';
@@ -8,6 +9,7 @@ import 'package:golfguidescorecard/utilities/global-data.dart';
 import 'package:golfguidescorecard/utilities/user-funtions.dart';
 import 'package:flutter/foundation.dart';
 
+import '../main.dart';
 
 class DataHoyoJuego {
   int _hoyoNro;
@@ -412,11 +414,17 @@ class DataJugadorScore {
     }
   /// STABLEFORD ----------------------------------------------
     int golpesHcpStb = 0;
-    int hcpStbTorneo=(hcpTorneo*0.85).round(); ///85%
+    setHcpStbTorneo(scoreCardStbType, hcpTorneo);
+    int hcpStbTorneo = hcpStbTorneo;
+    // if (scoreCardStbType == "scoreCardStb") {
+    //   hcpStbTorneo = (hcpTorneo * 0.85).round();
+    // } else if (scoreCardStbType == "scoreCardStb2") {
+    //   hcpStbTorneo = hcpTorneo.round();
+    // }
+    // int hcpStbTorneo=(hcpTorneo*0.85).round(); ///85%
     // int hcpStbTorneo=(hcpTorneo).round(); ///100%
     print("hcpStbTorneo---------------------");
     print(hcpStbTorneo);
-    // int hcpStbTorneo=(hcpTorneo*1).round();
     if (hcpStbTorneo < 0) {
       golpesHcpStb = (hcpStbTorneo ~/ 18) +
           UserFunctions.miif((hcpStbTorneo % 18) < handicap, -1, 0);
