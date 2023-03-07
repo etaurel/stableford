@@ -41,13 +41,8 @@ import 'package:golfguidescorecard/scoresCard/leaderBoard.dart';
 import 'package:golfguidescorecard/scoresCard/tablaResultados.dart';
 import 'package:recase/recase.dart';
 
-import '../main.dart';
-
 class ScoreCardStb2 extends StatefulWidget {
-  final String scoreCardType; // nuevo parámetro
-  final int hcpTorneo;
-
-  ScoreCardStb2({Key key, this.scoreCardType, this.hcpTorneo}) : super(key: key);
+  ScoreCardStb2() : super();
   @override
   ScoreCardStb2State createState() => ScoreCardStb2State();
 }
@@ -127,13 +122,6 @@ class ScoreCardStb2State extends State<ScoreCardStb2> with WidgetsBindingObserve
   Future<void> initState() {
     super.initState();
 
-    setHcpStbTorneo(widget.scoreCardType, widget.hcpTorneo); // actualizar la variable
-    if (widget.scoreCardType == "scoreCardStb") {
-      hcpStbTorneo = (widget.hcpTorneo * 0.85).round();
-    } else if (widget.scoreCardType == "scoreCardStb2") {
-      hcpStbTorneo = widget.hcpTorneo.round();
-    }
-
     this.postUser = GlobalData.postUser;
     postTorneo = Torneo.postTorneoJuego;
 
@@ -173,7 +161,6 @@ class ScoreCardStb2State extends State<ScoreCardStb2> with WidgetsBindingObserve
 
   @override
   Widget build(BuildContext context) {
-    scoreCardStbType = "scoreCardStb2"; // actualiza scoreCardStbType
     mToast = MessagesToast(context: context);
     var _marcadorData = {
       'ida': '',

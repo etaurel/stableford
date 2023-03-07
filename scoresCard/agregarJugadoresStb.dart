@@ -22,7 +22,6 @@ import 'package:golfguidescorecard/utilities/messages-toast.dart';
 import 'package:golfguidescorecard/utilities/user-funtions.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../main.dart';
 import '../mod_serv/servicesScore.dart';
 import 'package:recase/recase.dart';
 
@@ -35,8 +34,7 @@ class AgregaJugaStb extends StatefulWidget {
 }
 
 class AgregaJugaState extends State<AgregaJugaStb> {
-  int hcpTorneo = 0; // definir en el estado
-  //******************************************************************************
+//******************************************************************************
   var _limiteJugadores = 4;
   //******************************************************************************
   MessagesToast mToast;
@@ -1005,18 +1003,12 @@ class AgregaJugaState extends State<AgregaJugaStb> {
       Torneo.dataJugadoresScore = _jugadores;
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => scoreCardStbType == "scoreCardStb"
-              ? ScoreCardStb(scoreCardType: "scoreCardStb", hcpTorneo: hcpTorneo) // nuevo valor
-              : ScoreCardStb2(scoreCardType: "scoreCardStb2", hcpTorneo: hcpTorneo), // nuevo valor
+        PageTransition(
+          type: PageTransitionType.fade,
+          child: ScoreCardStb(),
         ),
+
       );
-      //   PageTransition(
-      //     type: PageTransitionType.fade,
-      //     child: ScoreCardStb(),
-      //   ),
-      //
-      // );
     }
   }
 
@@ -1066,18 +1058,12 @@ class AgregaJugaState extends State<AgregaJugaStb> {
       Torneo.dataJugadoresScore = _jugadores;
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => scoreCardStbType == "scoreCardStb"
-              ? ScoreCardStb(scoreCardType: "scoreCardStb", hcpTorneo: hcpTorneo) // nuevo valor
-              : ScoreCardStb2(scoreCardType: "scoreCardStb2", hcpTorneo: hcpTorneo), // nuevo valor
+        PageTransition(
+          type: PageTransitionType.fade,
+          child: ScoreCardStb2(),
         ),
+
       );
-      //   PageTransition(
-      //     type: PageTransitionType.fade,
-      //     child: ScoreCardStb2(),
-      //   ),
-      //
-      // );
     }
   }
   ///----------------------------------------------
